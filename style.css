@@ -44,10 +44,11 @@ form>button {
 	border: none;
 	height: 35px;
 	text-transform: uppercase;
+	transition: opacity 0.3s ease 0s;
 }
 
 form>button:hover {
-	background-color: violet;
+	opacity: 0.8;
 }
 
 ul {
@@ -67,6 +68,8 @@ ul {
 	color: red;
 	cursor: pointer;
 	font-weight: bolder;
+	transition: color 0.3s ease 0s;
+	margin-left: auto;
 }
 
 .close:hover {
