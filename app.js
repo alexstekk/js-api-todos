@@ -2,6 +2,7 @@
 let todos = [];
 let users = [];
 const todoList = document.querySelector('#todo-list');
+const userList = document.querySelector('#user-todo');
 
 // Attach Events
 document.addEventListener('DOMContentLoaded', initApp);
@@ -10,6 +11,13 @@ document.addEventListener('DOMContentLoaded', initApp);
 function getUserName(userId) {
 	const user = users.find((user) => user.id === userId);
 	return user.name;
+}
+function createUserOptions({ id, name }) {
+	const option = document.createElement('option');
+	option.value = id;
+	option.innerText = name;
+
+	userList.append(option);
 }
 function printTodo({ id, userId, title, completed }) {
 	const li = document.createElement('li');
@@ -35,6 +43,7 @@ function initApp() {
 	Promise.all([getAllTodos(), getAllUsers()]).then((values) => {
 		[todos, users] = values;
 		todos.forEach((todo) => printTodo(todo));
+		users.forEach((user) => createUserOptions(user));
 	});
 }
 
